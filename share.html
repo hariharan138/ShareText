@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body{
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;   
+            flex-direction: column;
+        }
+        .btn{
+            /* border: 2px solid blue; */
+            width: 310px;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+
+
+        }
+        form{
+            height: 500px;
+            width: 400px;
+            border: 2px solid hsl(0deg 0% 13.33%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+            border-radius:10px;
+
+        }
+        h1{
+            color: white;
+        }
+        textarea{
+        color: white;
+            border: 2px solid hsl(0deg 0% 13.33%);
+            height: 300px;
+            padding: 10px;
+            width: 300px;
+            outline: none;
+            background-color: black;
+            font-size: 17px;
+        }
+        #Cancelbtn{
+            height: 50px;
+            color: white;
+            width: 140px;
+            border: none;
+            border-radius:10px;
+            background-color: blue;
+        }
+        #submitbtn{
+            width: 140px;
+
+            height: 50px;
+            /* width: 156px; */
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius:10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/" method="post"> 
+       <div>
+        <textarea name="text" ></textarea>
+       </div>
+        <div class="btn">
+           <button type="submit" id="submitbtn">Paste</button>
+        </div>
+        </form>
+</body>
+</html>
