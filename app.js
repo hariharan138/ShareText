@@ -32,7 +32,7 @@ client.connect()
 
                             res.writeHead(200, { "Content-Type": "application/json" });
                             res.end(JSON.stringify({
-                                link: `http://localhost:4000/data/${insertResult.insertedId}`,
+                                link: `https://sharetext.onrender.com/data/${insertResult.insertedId}`,
                                 data: finalstr.text,
                             }));
                         } catch (err) {
@@ -53,7 +53,7 @@ client.connect()
 
         server.listen(3000, (err) => {
             if (err) throw err;
-            console.log("Server is running at port: http://localhost:3000");
+            console.log("Server is running at port: https://sharetext.onrender.com/");
         });
 
         function collectReqData(request, callback) {
@@ -94,7 +94,7 @@ client.connect()
 
 
         app.listen(4000, () => {
-            console.log("API running at http://localhost:4000");
+            console.log("API running at https://sharetext.onrender.com/");
         });
     })
     .catch((err) => {
