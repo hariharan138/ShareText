@@ -13,12 +13,10 @@ const uri = "mongodb+srv://harii:RYFvmXgAGeQwfjtT@mydb.vcxyb.mongodb.net/?retryW
 const client = new MongoClient(uri);
 let finalstr = "";
 
-// Connect to MongoDB once and reuse the connection for all requests
+
 client.connect()
     .then(() => {
         console.log("Connected to MongoDB Atlas");
-
-        // HTTP Server for Handling Form Data
         let server = http.createServer(async (req, res) => {
             if (req.method === "POST") {
                 collectReqData(req, async (result) => {
@@ -26,13 +24,12 @@ client.connect()
                         finalstr = querystring.parse(result);
 
                         try {
-                            const database = client.db("Database"); // Ensure it's a string
-                            const collection = database.collection("chunks"); // Ensure it's a string
+                            const database = client.db("Database"); 
+                            const collection = database.collection("chunks"); 
 
                             const insertResult = await collection.insertOne(finalstr);
                             console.log(`Document inserted with _id: ${insertResult.insertedId}`);
 
-                            // Send back the inserted ID in the response
                             res.writeHead(200, { "Content-Type": "application/json" });
                             res.end(JSON.stringify({
                                 link: `http://localhost:4000/data/${insertResult.insertedId}`,
@@ -54,13 +51,11 @@ client.connect()
             }
         });
 
-        // Start HTTP Server
         server.listen(3000, (err) => {
             if (err) throw err;
             console.log("Server is running at port: http://localhost:3000");
         });
 
-        // Helper Function to Collect Request Data
         function collectReqData(request, callback) {
             let form_URLENCODED = "application/x-www-form-urlencoded";
             if (request.headers["content-type"] === form_URLENCODED) {
@@ -76,13 +71,12 @@ client.connect()
             }
         }
 
-        // Express Route to Retrieve Data
+
         app.get("/data/:id", async (req, res) => {
             const { id } = req.params;
             try {
-                const db = client.db("Database"); // Ensure it's a string
-                const collection = db.collection("chunks"); // Ensure it's a string
-
+                const db = client.db("Database");
+                const collection = db.collection("chunks"); 
                 // Convert id to ObjectId
                 const objectId = new ObjectId(id);
 
@@ -98,7 +92,7 @@ client.connect()
             }
         });
 
-        // Start the Express API server
+
         app.listen(4000, () => {
             console.log("API running at http://localhost:4000");
         });

@@ -1,5 +1,14 @@
 RYFvmXgAGeQwfjtT
 
+
+PORT=3000
+MONGODB_URI=mongodb+srv://harii:RYFvmXgAGeQwfjtT@cluster0.mongodb.net/?retryWrites=true&w=majority
+
+
+
+
+
+
 const { MongoClient, ObjectId } = require("mongodb");
 let http = require("http");
 let fs = require("fs");
